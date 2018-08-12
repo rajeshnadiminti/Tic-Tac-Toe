@@ -101,6 +101,8 @@ def player_choice(board):
     while position not in '1 2 3 4 5 6 7 8 9'.split() or not space_check(board, int(position)):  # You can either use sting like '1 2 3 4 5 6 7 8' or a list ['1', '2', '3', '4', '5', '6', '7', '8', '9']. Both will give the same result.
 
         position = input('Please Choose from (1-9)')
+        if position not in '1 2 3 4 5 6 7 8 9'.split():
+            print ("Invalid Choice. Please Choose from (1-9)")
     return int(position)
 
 
@@ -120,12 +122,13 @@ print('Welcome to Tic Tac Toe!')
 
 while True:
     # Reset` the board
+
     theBoard = [' '] * 10       # to make sure we are using empty board to start the game
     player1_marker, player2_marker = player_input()   # To choose the player markers for each player using player_input function
     turn = choose_first()       # Call the choose_first funtion to randomly select the player to start the game
     print(turn + ' will go first.')   # Print the randomly selected player information. So that the selected player will start the game.
 
-    play_game = input('Ready to play? y or n?')  # ask for player confirmation if he wants to start the game or not.
+    play_game = input('Are you ready to play? Yes(Y) or No(N)?')  # ask for player confirmation if he wants to start the game or not.
 
     if play_game.lower() == 'y':    # If player wants to start the game or not, assign that boolean value to new variable
         game_on = True
@@ -143,7 +146,7 @@ while True:
 
             if win_check(theBoard, player1_marker):     #Check the condition if the player won or not
                 display_board(theBoard)
-                print('Congratulations Player1..! You have won the game..!')    #if the player has one print the message indicating the player has won else enter into the loop againa nd ask the player to choose the marker
+                print('Congratulations Player 1...! You have won the game..!')    #if the player has one print the message indicating the player has won else enter into the loop againa nd ask the player to choose the marker
                 game_on = False
             else:
                 if full_board_check(theBoard):          # Verify the condition where no player has won
@@ -163,7 +166,7 @@ while True:
 
             if win_check(theBoard, player2_marker):
                 display_board(theBoard)
-                print('Congratulations Player2..! You have won the game..!')
+                print('Congratulations Player 2...! You have won the game..!')
                 game_on = False
             else:
                 if full_board_check(theBoard):
